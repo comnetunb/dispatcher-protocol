@@ -1,6 +1,6 @@
 {
   "name": "dispatcher-protocol",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Protocol used by the Simulations dispatching manager",
   "main": "index.js",
   "scripts": {
