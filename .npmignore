@@ -1,0 +1,9 @@
+# QA
+test
+.eslintrc
+.circleci
+
+# Git
+.gitattributes
+.git
+
