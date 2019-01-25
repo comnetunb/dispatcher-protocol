@@ -1,4 +1,4 @@
-const SlaveState = {
+const WorkerState = {
   EXECUTING: 0,
   PAUSED: 1
 };
@@ -16,6 +16,6 @@ const TerminateTaskCode = {
   DENIED: 1
 };
 
-module.exports.SlaveState = SlaveState;
+module.exports.WorkerState = WorkerState;
 module.exports.Flags = Flags;
 module.exports.TerminateTaskCode = TerminateTaskCode;
