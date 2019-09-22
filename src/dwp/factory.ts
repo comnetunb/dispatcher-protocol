@@ -1,37 +1,11 @@
-import { GetLanguageCommand } from "./pdu/get_language_command";
-import { GetLanguageSupport } from "./pdu/get_language_support";
-import { GetReport } from "./pdu/get_report";
-import { LanguageCommand } from "./pdu/language_command";
-import { LanguageSupport } from "./pdu/language_support";
-import { PerformCommand } from "./pdu/perform_command";
-import { PerformTaskResponse } from "./pdu/perform_task_response";
-import { PerformTask } from "./pdu/perform_task";
-import { Report } from "./pdu/report";
-import { TaskResult } from "./pdu/task_result";
-import { TerminateTask } from "./pdu/terminate_task";
-import { TerminateTaskResponse } from "./pdu/terminate_task_response";
-import { PDU, ProtocolVersion, ProtocolType } from "./common";
+import { PDU, ProtocolVersion, ProtocolType, CommandData } from "./common";
 
 const BEGIN_TAG = '/BEGIN/';
 const END_TAG = '/END/';
 
-export function encapsulate(data: GetLanguageCommand
-  | GetLanguageSupport
-  | LanguageSupport
-  | LanguageCommand
-  | PerformCommand
-  | PerformTask
-  | PerformTaskResponse
-  | TaskResult
-  | GetReport
-  | Report
-  | TerminateTask
-  | TerminateTaskResponse
-  , type: ProtocolType): string {
-
+export function EncapsulatePDU(data: CommandData): string {
   const packet: PDU = {
     header: {
-      type,
       ts: (new Date()),
       v: ProtocolVersion,
     },
@@ -41,7 +15,7 @@ export function encapsulate(data: GetLanguageCommand
   return BEGIN_TAG + JSON.stringify(packet) + END_TAG;
 };
 
-export function expose(packet: string): string {
+export function ExposeFirstPDU(packet: string): string {
   const beginIndex = packet.search(BEGIN_TAG);
 
   if (beginIndex === -1) {
@@ -61,7 +35,7 @@ export function expose(packet: string): string {
 /*
  * Removes first occurrence of DWP packet
 */
-export function remove(packet: string): string {
+export function RemoveFirstPDU(packet: string): string {
   const beginIndex = packet.search(BEGIN_TAG);
 
   if (beginIndex === -1) {

@@ -14,7 +14,7 @@ import { TerminateTaskResponse } from "./pdu/terminate_task_response";
 // Protocol Version
 export const ProtocolVersion: string = '2.0';
 
-export const enum ProtocolType {
+export enum ProtocolType {
   GetReport = 0,
   Report = 1,
   PerformTask = 2,
@@ -30,41 +30,32 @@ export const enum ProtocolType {
 }
 
 export interface PDUHeader {
-  type: ProtocolType,
   ts: Date,
   v: string,
 }
 
+export interface CommandData {
+  type: ProtocolType,
+}
+
+export interface TaskInfo {
+  id: string,
+  pid?: number,
+}
+
 export interface PDU {
   header: PDUHeader,
-  data: GetLanguageCommand
-  | GetLanguageSupport
-  | LanguageSupport
-  | LanguageCommand
-  | PerformCommand
-  | PerformTask
-  | PerformTaskResponse
-  | TaskResult
-  | GetReport
-  | Report
-  | TerminateTask
-  | TerminateTaskResponse,
+  data: CommandData,
 }
 
-export const enum ReturnCode {
+export enum ReturnCode {
   Executing,
   Denied,
+  Error,
+  Success,
 }
 
-export const enum Flags {
-  Resource = (1 << 0),
-  Tasks = (1 << 1),
-  State = (1 << 2),
-  Alias = (1 << 3),
-  SupportedLanguages = (1 << 4),
-}
-
-export const enum TerminateTaskCode {
+export enum TerminateTaskCode {
   TERMINATED = 0,
   DENIED = 1
 }

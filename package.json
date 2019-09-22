@@ -1,6 +1,6 @@
 {
   "name": "dispatcher-protocol",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Protocol used by the Simulations dispatching manager",
   "main": "built/index.js",
   "types": "built/index.d.ts",
@@ -9,6 +9,8 @@
     "test:coverage": "npm run lint && nyc mocha test/ --recursive -c",
     "test:watch": "mocha test/ --recursive -c -w",
     "lint": "esw *.ts dwp --color",
+    "build": "tsc --declaration",
+    "prepublish": "tsc --declaration",
     "release-check-files": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "patch-release": "npm version patch -m \"release: v%s\" && npm publish && git push --follow-tags",
     "minor-release": "npm version minor -m \"release: v%s\" && npm publish && git push --follow-tags",
@@ -25,6 +27,9 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-watch": "^3.1.4",
     "mocha": "^5.2.0",
-    "nyc": "^11.8.0"
+    "nyc": "^14.1.1"
+  },
+  "dependencies": {
+    "@types/node": "^12.7.5"
   }
 }

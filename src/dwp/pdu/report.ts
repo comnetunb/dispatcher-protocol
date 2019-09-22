@@ -1,9 +1,11 @@
+import { CommandData, ProtocolType, TaskInfo } from '../common';
+
 export interface ResourcesReport {
   cpu: number,
   memory: number,
 }
 
-export const enum WorkerState {
+export enum WorkerState {
   Executing,
   Paused,
 }
@@ -13,14 +15,22 @@ export interface StateReport {
 }
 
 export interface TasksReport {
-  tasks: any[], // TODO,
+  tasks: TaskInfo[], // TODO,
+}
+
+export interface LanguageInfo {
+  name: string,
+  version: string,
+  command: string,
+  supported: boolean,
 }
 
 export interface SupportedLanguagesReport {
-  languages: string[],
+  languages: LanguageInfo[],
 }
 
-export interface Report {
+export interface Report extends CommandData {
+  readonly type: ProtocolType.Report,
   resources?: ResourcesReport,
   state?: StateReport,
   tasks?: TasksReport,

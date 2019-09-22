@@ -7,3 +7,6 @@ test
 .gitattributes
 .git
 
+# TS
+src/
+tsconfig.json
