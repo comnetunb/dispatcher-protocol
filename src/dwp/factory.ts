@@ -23,12 +23,13 @@ export function ExposeFirstPDU(packet: string): string {
   }
 
   const restOfThePacket = packet.substring(beginIndex + BEGIN_TAG.length);
-  const endIndex = restOfThePacket.search(END_TAG);
+  let endIndex = restOfThePacket.search(END_TAG);
 
   if (endIndex === -1) {
     throw Object({ error: 'expose error', reason: 'end tag was not found' });
   }
 
+  endIndex += beginIndex + BEGIN_TAG.length;
   return packet.substring(beginIndex + BEGIN_TAG.length, endIndex);
 };
 
@@ -43,11 +44,12 @@ export function RemoveFirstPDU(packet: string): string {
   }
 
   const restOfThePacket = packet.substring(beginIndex + BEGIN_TAG.length);
-  const endIndex = restOfThePacket.search(END_TAG);
+  let endIndex = restOfThePacket.search(END_TAG);
 
   if (endIndex === -1) {
     throw Object({ error: 'remove error', reason: 'end tag was not found' });
   }
 
+  endIndex += beginIndex + BEGIN_TAG.length;
   return packet.replace(packet.substring(beginIndex, endIndex + END_TAG.length), '');
 };

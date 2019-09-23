@@ -40,6 +40,7 @@ export interface CommandData {
 
 export interface TaskInfo {
   id: string,
+  startTime?: Date,
   pid?: number,
 }
 
