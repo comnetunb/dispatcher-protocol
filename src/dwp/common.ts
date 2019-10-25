@@ -60,3 +60,8 @@ export enum TerminateTaskCode {
   TERMINATED = 0,
   DENIED = 1
 }
+
+export interface ProtocolFile {
+  name: string,
+  content: string,
+}

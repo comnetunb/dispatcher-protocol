@@ -1,5 +1,5 @@
 export { RemoveFirstPDU, EncapsulatePDU, ExposeFirstPDU } from './dwp/factory';
-export { ProtocolVersion, ProtocolType, PDU, PDUHeader, ReturnCode, TaskInfo, TerminateTaskCode, CommandData } from './dwp/common';
+export { ProtocolVersion, ProtocolType, PDU, PDUHeader, ReturnCode, TaskInfo, TerminateTaskCode, CommandData, ProtocolFile } from './dwp/common';
 export { GetLanguageCommand } from './dwp/pdu/get_language_command';
 export { GetLanguageSupport } from './dwp/pdu/get_language_support';
 export { GetReport } from './dwp/pdu/get_report';
