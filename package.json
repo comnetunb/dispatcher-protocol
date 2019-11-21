@@ -1,6 +1,6 @@
 {
   "name": "dispatcher-protocol",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Protocol used by the Simulations dispatching manager",
   "main": "built/index.js",
   "types": "built/index.d.ts",
